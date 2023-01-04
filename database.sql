@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2023 at 05:25 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 7.4.33
+-- Generation Time: Jan 04, 2023 at 07:43 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `admin` (
   `password` varchar(250) NOT NULL,
   `image` varchar(400) NOT NULL,
   `CreateDate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
@@ -55,7 +55,7 @@ CREATE TABLE `admin_form` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `image` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin_form`
@@ -79,25 +79,30 @@ CREATE TABLE `appointment` (
   `number` varchar(15) NOT NULL,
   `email` varchar(30) NOT NULL,
   `DietitianName` varchar(250) NOT NULL,
+  `drid` int(11) NOT NULL,
   `VisitingTime` varchar(250) NOT NULL,
   `Message` varchar(250) NOT NULL,
-  `status` varchar(100) NOT NULL DEFAULT 'Pending your request',
+  `status` int(100) NOT NULL DEFAULT 0,
   `appointment_time` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`id`, `username`, `number`, `email`, `DietitianName`, `VisitingTime`, `Message`, `status`, `appointment_time`) VALUES
-(1, 'abid', '', 'abid@gmail.com', '', '', '', '1', '2022-12-25 19:51:51'),
-(2, 'sakib', '', 'sakib@123', '', '', '', '2', '2022-12-25 20:21:28'),
-(3, 'testing', '121012451', 'test@gmail.com', 'test', '', '', '0', '2023-01-03 22:02:12'),
-(4, 'testing', '121012451', 'test@gmail.com', 'test', '', '', '0', '2023-01-03 22:03:26'),
-(5, 'testing', '121012451', 'test@gmail.com', 'test', 'Prof. Dr. Md. Mahbubur Rahman Major ', ' 11am to 1pm & 6pm to 9pm (Every day)', '0', '2023-01-03 22:04:57'),
-(6, 'testing', '121012451', 'test@gmail.com', 'hi', 'Prof. Dr. Md. Mahbubur Rahman Major ', ' 11am to 1pm & 6pm to 9pm (Every day)', '0', '2023-01-03 22:06:33'),
-(7, 'testing', '121012451', 'test@gmail.com', 'Prof. Dr. Md. Mahbubur Rahman Major ', ' 11am to 1pm & 6pm to 9pm (Every day)', 'test', '0', '2023-01-03 22:07:29'),
-(8, 'testing', '121012451', 'test@gmail.com', 'Prof. Dr. Md. Mahbubur Rahman Major', ' 11am to 1pm & 6pm to 9pm (Eve', 'test everything ok', 'Pending your request', '2023-01-03 22:30:12');
+INSERT INTO `appointment` (`id`, `username`, `number`, `email`, `DietitianName`, `drid`, `VisitingTime`, `Message`, `status`, `appointment_time`) VALUES
+(1, 'abid', '', 'abid@gmail.com', '', 0, '', '', 1, '2022-12-25 19:51:51'),
+(2, 'sakib', '', 'sakib@123', '', 26, '', '', 1, '2022-12-25 20:21:28'),
+(3, 'testing', '121012451', 'test@gmail.com', 'test', 0, '', '', 0, '2023-01-03 22:02:12'),
+(4, 'testing', '121012451', 'test@gmail.com', 'test', 0, '', '', 0, '2023-01-03 22:03:26'),
+(5, 'testing', '121012451', 'test@gmail.com', 'test', 0, 'Prof. Dr. Md. Mahbubur Rahman Major ', ' 11am to 1pm & 6pm to 9pm (Every day)', 0, '2023-01-03 22:04:57'),
+(6, 'testing', '121012451', 'test@gmail.com', 'hi', 0, 'Prof. Dr. Md. Mahbubur Rahman Major ', ' 11am to 1pm & 6pm to 9pm (Every day)', 0, '2023-01-03 22:06:33'),
+(7, 'testing', '121012451', 'test@gmail.com', 'Prof. Dr. Md. Mahbubur Rahman Major ', 0, ' 11am to 1pm & 6pm to 9pm (Every day)', 'test', 0, '2023-01-03 22:07:29'),
+(8, 'testing', '121012451', 'test@gmail.com', 'Prof. Dr. Md. Mahbubur Rahman Major', 0, ' 11am to 1pm & 6pm to 9pm (Eve', 'test everything ok', 0, '2023-01-03 22:30:12'),
+(9, 'salman', '01705548264', 'sksalmanmiah@gmail.com', 'Dr.Jahangir Kabir', 0, '6.00-11.00 PM', 'test', 0, '2023-01-04 17:02:45'),
+(10, 'salman', '01705548264', 'sksalmanmiah@gmail.com', 'Hassain', 0, '11am to 1pm & 6pm to 9pm (Ever', 'hasain test', 0, '2023-01-04 17:02:59'),
+(11, 'salman', '01705548264', 'sksalmanmiah@gmail.com', 'Hassain', 27, '11am to 1pm & 6pm to 9pm (Ever', 'test id', 0, '2023-01-04 17:12:06'),
+(12, 'salman', '01705548264', 'sksalmanmiah@gmail.com', 'Hassain', 27, '11am to 1pm & 6pm to 9pm (Ever', 'test id', 0, '2023-01-04 17:39:14');
 
 -- --------------------------------------------------------
 
@@ -111,7 +116,7 @@ CREATE TABLE `blog` (
   `blog_content` text NOT NULL,
   `blog_image` varchar(400) NOT NULL,
   `blog_create_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `blog`
@@ -132,37 +137,18 @@ CREATE TABLE `booked` (
   `name` varchar(250) NOT NULL,
   `email` varchar(30) NOT NULL,
   `TrainerName` varchar(250) NOT NULL,
+  `trainerId` int(11) NOT NULL,
   `BookingDate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `booked`
 --
 
-INSERT INTO `booked` (`id`, `name`, `email`, `TrainerName`, `BookingDate`) VALUES
-(1, 'Ashibul', 'tonmoy@gmail.com', '', '2023-01-02 19:28:30'),
-(2, 'testing', 'test@gmail.com', '', '2023-01-02 19:32:55'),
-(3, 'testing', 'test@gmail.com', '', '2023-01-02 19:35:11'),
-(4, 'testing', 'test@gmail.com', '', '2023-01-02 19:43:12'),
-(5, 'testing', 'test@gmail.com', '', '2023-01-02 19:43:57'),
-(6, 'testing', 'test@gmail.com', '', '2023-01-02 19:43:57'),
-(7, 'testing', 'test@gmail.com', '', '2023-01-02 19:44:59'),
-(8, 'testing', 'test@gmail.com', '', '2023-01-02 19:45:25'),
-(9, 'testing', 'test@gmail.com', '', '2023-01-02 19:45:48'),
-(10, 'testing', 'test@gmail.com', '', '2023-01-02 19:48:43'),
-(11, 'testing', 'test@gmail.com', '', '2023-01-02 19:48:43'),
-(12, 'testing', 'test@gmail.com', '', '2023-01-02 19:48:47'),
-(13, 'testing', 'test@gmail.com', '', '2023-01-02 19:48:50'),
-(14, 'testing', 'test@gmail.com', '', '2023-01-02 19:50:46'),
-(15, 'testing', 'test@gmail.com', '', '2023-01-02 19:51:20'),
-(16, 'testing', 'test@gmail.com', '', '2023-01-02 19:52:33'),
-(17, 'testing', 'test@gmail.com', '', '2023-01-02 19:52:39'),
-(18, 'testing', 'test@gmail.com', '', '2023-01-02 19:52:42'),
-(19, 'testing', 'test@gmail.com', '', '2023-01-02 19:52:51'),
-(20, 'testing', 'test@gmail.com', '', '2023-01-02 19:53:38'),
-(21, 'testing', 'test@gmail.com', '', '2023-01-02 19:53:39'),
-(22, 'shuvo', 'shuvo@gmail.com', '', '2023-01-03 21:22:33'),
-(23, 'shuvo', 'shuvo@gmail.com', '', '2023-01-03 21:22:35');
+INSERT INTO `booked` (`id`, `name`, `email`, `TrainerName`, `trainerId`, `BookingDate`) VALUES
+(35, 'salman', 'sksalmanmiah@gmail.com', '', 4, '2023-01-04 18:04:22'),
+(36, 'salman', 'sksalmanmiah@gmail.com', '', 5, '2023-01-04 18:04:24'),
+(37, 'salman', 'sksalmanmiah@gmail.com', '', 3, '2023-01-04 18:04:26');
 
 -- --------------------------------------------------------
 
@@ -181,7 +167,7 @@ CREATE TABLE `dietitian` (
   `image` varchar(400) NOT NULL,
   `password` varchar(250) NOT NULL,
   `d-acc_create_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dietitian`
@@ -198,7 +184,7 @@ INSERT INTO `dietitian` (`id`, `name`, `info`, `number`, `email`, `address`, `vi
 (19, 'Prof. Dr. Md. Rahman Major', 'sghjdghvc', '0124587', 'user2@gmail.com', 'Square Hospital ,Panthapath, Dhaka', '11am to 1pm & 6pm to 9pm (Ever', '../uploaded_img/blog-5.jpg', '202cb962ac59075b964b07152d234b70', '2023-01-04 01:53:37'),
 (20, 'Prof. Dr. Md. Rahman Major', 'hjkghjgfhf', '0124587', 'tonmoy@gmail.com', 'Square Hospital ,Panthapath, Dhaka', '11am to 1pm & 6pm to 9pm (Ever', '../uploaded_img/blog-5.jpg', '', '2023-01-04 01:54:15'),
 (21, 'Prof. Dr. Md. Mahbubur Rahman Major', 'sdsghfjlhgjkbnm,', '12451232654', 'asjabed@gmai.com', 'Square Hospital ,Panthapath, Dhaka', '11am to 1pm & 6pm to 9pm (Ever', '../uploaded_img/3.jpg', '', '2023-01-04 01:58:29'),
-(26, 'Prof. Dr. Md. Rahman Major', 'kljhfgcfghmv', '0124587', 'admin@gmail.com', 'Square Hospital ,Panthapath, Dhaka', '11am to 1pm & 6pm to 9pm (Ever', 'favicon.png', '202cb962ac59075b964b07152d234b70', '2023-01-04 03:38:07'),
+(26, 'Prof. Dr. Md. Rahman Major', 'kljhfgcfghmv', '0124587', 'admin@gmail.com', 'Square Hospital ,Panthapath, Dhaka', '11am to 1pm & 6pm to 9pm (Ever', '7548DFD5-908E-4671-A0AC-DAA97E21FA8A.jpeg', '202cb962ac59075b964b07152d234b70', '2023-01-04 03:38:07'),
 (27, 'Hassain', 'jksgfdgjhkjhb', '016000000', 'admin@gmail.com', 'Square Hospital ,Panthapath, Dhaka', '11am to 1pm & 6pm to 9pm (Ever', '../uploaded_img/blog-2.jpg', 'd41d8cd98f00b204e9800998ecf8427e', '2023-01-04 03:50:50');
 
 -- --------------------------------------------------------
@@ -216,7 +202,7 @@ CREATE TABLE `trainer` (
   `image` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
   `Createdate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `trainer`
@@ -241,7 +227,7 @@ CREATE TABLE `user` (
   `email` varchar(30) NOT NULL,
   `number` varchar(15) NOT NULL,
   `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
@@ -260,7 +246,8 @@ INSERT INTO `user` (`id`, `fname`, `lname`, `username`, `email`, `number`, `pass
 (13, 'as', 'Abir', '', 'abir@gmail.com', '2147483647', '698d51a19d8a121ce581499d7b701668'),
 (14, 'simran', 'akter', 'Simran', 'simran@gmail.com', '2147483647', '698d51a19d8a121ce581499d7b701668'),
 (15, 'test', 'test', 'testing', 'test@gmail.com', '121012451', '202cb962ac59075b964b07152d234b70'),
-(16, 'Tonmoy', 'Sarker', 'Ashibul', 'tonmoy@gmail.com', '2147483647', '202cb962ac59075b964b07152d234b70');
+(16, 'Tonmoy', 'Sarker', 'Ashibul', 'tonmoy@gmail.com', '2147483647', '202cb962ac59075b964b07152d234b70'),
+(17, 'sheikh', 'salman', 'salman', 'sksalmanmiah@gmail.com', '01705548264', '5f2f2a8e1222fe2b960a58593ddafe0b');
 
 -- --------------------------------------------------------
 
@@ -275,7 +262,7 @@ CREATE TABLE `workshop` (
   `link` varchar(250) NOT NULL,
   `image` varchar(400) NOT NULL,
   `CreateDate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `workshop`
@@ -362,7 +349,7 @@ ALTER TABLE `admin_form`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `blog`
@@ -374,7 +361,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `booked`
 --
 ALTER TABLE `booked`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `dietitian`
@@ -392,7 +379,7 @@ ALTER TABLE `trainer`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `workshop`

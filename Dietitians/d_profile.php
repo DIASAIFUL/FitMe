@@ -41,7 +41,7 @@ if(isset($_GET['logout'])){
          if($fetch['image'] == ''){
             echo '<img src="../images/default-avatar.png">';
          }else{
-            echo '<img src="../uploaded_img/'.$fetch['image'].'">';
+            echo '<img src="/FitMe/uploaded_img/'.$fetch['image'].'">';
          }
       ?>
       <h3><?php echo $fetch['name']; ?></h3>

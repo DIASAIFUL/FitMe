@@ -9,26 +9,29 @@
 
             $select ="SELECT * FROM `booked` WHERE email = '$email' ";
             $query = mysqli_query($conn, $select);
-            $alradyemailtaken=false;
-            if(mysqli_num_rows($query) > 0){
-                $alradyemailtaken=true;
-               }else{
+           
+            $res = [];
 
-
-               }
+            while($row = mysqli_fetch_assoc($query)) {
+                $res[] = $row;
+            }
+            // echo '<pre>'; print_r($res); echo '</pre>';
+          
 
 
                if(isset($_GET['email'])){
         $name=$_GET['name'];
        
         $email=$_GET['email'];
+
+        $trainerId=$_GET['trainerId'];
         
 
 
             
-               $insert="INSERT INTO `booked`(`name`, `email`) VALUES ('$name','$email')";
+               $insert="INSERT INTO `booked`(`name`, `email`, `trainerId`) VALUES ('$name','$email','$trainerId')";
               $result = mysqli_query($conn, $insert) or die(mysqli_error($conn));
- 
+              header('location:trainer.php');
             
 
               }
@@ -81,11 +84,13 @@
 	<?php
 					//include 'config.php';
 
-					$sel= "SELECT * FROM `trainer`";
+					$sel= "SELECT * FROM `trainer` WHERE ";
 					$query=$conn-> query($sel);
 
 					while($row=$query->fetch_assoc()){
+            $alradyemailtaken=in_array($row['id'], array_column($res, 'trainerId'));
 
+ 
                         ?>
                   <div class="col-md-4">
 
@@ -104,9 +109,9 @@
                         <?php
                         if (isset($_SESSION['username'])) {
                           
-                
+                          
                           ?>
-                          <a class="<?php echo  $alradyemailtaken?"btnnone":""; ?>"  href="trainer.php?email=<?php echo  $_SESSION['email']; ?>&name=<?php echo  $_SESSION['username']; ?>"><?php echo  $alradyemailtaken?"Alrady Booked":"Appoinment"; ?></a>
+                          <a class="<?php echo  $alradyemailtaken==1?"btnnone":""; ?>"  href="trainer.php?email=<?php echo  $_SESSION['email']; ?>&name=<?php echo  $_SESSION['username']; ?>&trainerId=<?php echo $row['id'] ?>"><?php echo  $alradyemailtaken==1?"Alrady Booked":"Appoinment"; ?></a>
                           <?php
                           
                           }else{

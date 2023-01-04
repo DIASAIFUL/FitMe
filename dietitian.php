@@ -7,6 +7,7 @@ if(isset($_POST['submit'])){
         $number=$_POST['number'];
         $email=$_POST['email'];
         $DietitianName=$_POST['D_Name'];
+        $DietitianID=$_POST['D_ID'];
         $v_time=$_POST['D_V_Time'];
         $message=$_POST['message'];
         
@@ -16,7 +17,7 @@ if(isset($_POST['submit'])){
 
 
 
-            $insert="INSERT INTO `appointment`(`username`, `number`,`email`, `DietitianName`, `VisitingTime`, `Message`) VALUES ('$name','$number','$email','$DietitianName','$v_time' ,'$message')";
+            $insert="INSERT INTO `appointment`(`username`, `number`,`email`, `DietitianName`,`drid`, `VisitingTime`, `Message`) VALUES ('$name','$number','$email','$DietitianName','$DietitianID','$v_time' ,'$message')";
             $result = mysqli_query($conn, $insert) or die(mysqli_error($conn));
             if($result) {
                 echo "<script>alert('Wow! Appoinment successfully Completed.')</script>";
@@ -117,6 +118,8 @@ if(isset($_POST['submit'])){
                                 <label for="uname"> Selected Dietitian:</label>
                                 <input type="text" class="form-control" placeholder="Enter Your Contact Number"
                                     id="drtitle" name="D_Name"  required>
+                                <input type="text" class="form-control" hidden placeholder="Enter Your Contact Number"
+                                    id="drid" name="D_ID" required>
 
                             </div>
                             <div class="form-group">
@@ -196,7 +199,7 @@ if(isset($_POST['submit'])){
                                 <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"
                                     id="openmodalbtnreal" style="opacity:0"> Appiontment</button>
                                 <button class="btn btn-danger" id="openmodalbtn"
-                                    onclick="setModalData('<?php echo $row['name']; ?>','<?php echo isset($_SESSION['username']); ?>' ,'<?php echo $row['visiting_time']; ?>')">
+                                    onclick="setModalData('<?php echo $row['name']; ?>','<?php echo isset($_SESSION['username']); ?>' ,'<?php echo $row['visiting_time']; ?>','<?php echo $row['id']; ?>')">
                                     Appiontment</button>
                             </div>
                         </div>
@@ -249,10 +252,11 @@ if(isset($_POST['submit'])){
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/scripts.js"></script>
         <script>
-        function setModalData(name, IssLogin,VisitingTime) {
+        function setModalData(name, IssLogin,VisitingTime,drid) {
             if (IssLogin) {
                 document.getElementById("drtitle").value = name;
                 document.getElementById("VisitingTime").value = VisitingTime;
+                document.getElementById("drid").value = drid;
                 document.getElementById("openmodalbtnreal").click();
             } else {
                 window.location = "login.php";

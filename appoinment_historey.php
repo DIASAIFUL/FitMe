@@ -1,9 +1,8 @@
 <?php
-session_start();
-//error_reporting(0);
 include('includes/dbconnection.php');
-include 'config.php';
-
+// include 'config.php';
+error_reporting(0);
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -102,9 +101,10 @@ $Email=$_SESSION['email'];
                                 <tbody>
                   <?php
              
-$sql="SELECT * from appointment WHERE email='$Email'  AND ( username like '$sdata%' ||  email like '$sdata%') ";
+$sql="SELECT * from appointment WHERE email=:email  AND ( username like :sdata ||  email like :sdata)";
 $query = $dbh -> prepare($sql);
-$query-> bindParam(':email', $Email, PDO::PARAM_STR);
+$query-> bindParam(':email', $Email,PDO::PARAM_STR);
+$query-> bindParam(':sdata', $sdata, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 
