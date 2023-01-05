@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) {
     <!--Main layout-->
     <main style="margin-top: 58px">
         <div class="container pt-4">
-         Welcome Admin 
+         <h1>Welcome to Admin Dashboard</h1>
         </div>
     </main>
     <!--Main layout-->

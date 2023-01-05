@@ -1,3 +1,19 @@
+<?php
+session_start();
+error_reporting(0);
+include 'config.php';
+
+
+
+if (!isset($_SESSION['user_name'])) {
+    header("Location: a_login.php");
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,17 +48,21 @@
                     <a href="view_appoinmrnt.php" class="list-group-item list-group-item-action py-2 ripple">
                         <i class="fas fa-chart-pie fa-fw me-3"></i><span>Appoinment</span>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                    <a href="view-booking.php" class="list-group-item list-group-item-action py-2 ripple"><i
                             class="fas fa-chart-bar fa-fw me-3"></i><span>Booked</span></a>
 
                     <a href="view_trainers.php" class="list-group-item list-group-item-action py-2 ripple"><i
-                            class="fas fa-calendar fa-fw me-3"></i><span>Trainers</span></a>
+                            class="fas fa-users fa-fw me-3"></i><span>Trainers</span></a>
                     <a href="view_workshop.php" class="list-group-item list-group-item-action py-2 ripple"><i
                             class="fas fa-calendar fa-fw me-3"></i><span>Workshop</span></a>
+                    <a href="view_workshop-reg.php" class="list-group-item list-group-item-action py-2 ripple"><i
+                            class="fas fa-users fa-fw me-3"></i><span> Workshop Users</span></a>
                     <a href="view_user_data.php" class="list-group-item list-group-item-action py-2 ripple"><i
                             class="fas fa-users fa-fw me-3"></i><span>Users</span></a>
                     <a href="admin_blog.php" class="list-group-item list-group-item-action py-2 ripple"><i
                             class="fas fa-blog fa-fw me-3"></i><span>Add Blog</span></a>
+                    <a href="a_register.php" class="list-group-item list-group-item-action py-2 ripple"><i
+                            class="fas fa-user fa-fw me-2"></i><span>Add Another Admin</span></a>
                 </div>
             </div>
         </nav>
@@ -86,7 +106,7 @@
                     <li class="nav-item dropdown">
 
                         <a href="admin_profile.php" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
-                            <i class="fas fa-user"></i>
+                        <?php echo  $_SESSION['user_name']; ?><i class="fas fa-user"></i>
                         </a>
 
                     </li>

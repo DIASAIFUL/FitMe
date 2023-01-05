@@ -6,7 +6,7 @@
     <main style="margin-top: 58px">
         <div class="container pt-4">
         <table class="table align-middle mb-0 bg-white">
-            <h1>User Data</h1>
+            <h1>Dietitian Appoinment Data</h1>
         <thead class="bg-light">
             <tr>
                 <th>SI No</th>
@@ -45,8 +45,7 @@
                 
 
                 <td>
-                    <a href="" class="btn btn-success" >Edit</a>
-                    <a href="" class="btn btn-danger">Delete</a>
+                <a class="btn btn-danger" href="delete.php?id=<?php echo $row['id'];?>">DELETE</a>
                 </td>
             </tr>
 

@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
             $insert="INSERT INTO `appointment`(`username`, `number`,`email`, `DietitianName`,`drid`, `VisitingTime`, `Message`) VALUES ('$name','$number','$email','$DietitianName','$DietitianID','$v_time' ,'$message')";
             $result = mysqli_query($conn, $insert) or die(mysqli_error($conn));
             if($result) {
-                echo "<script>alert('Wow! Appoinment successfully Completed.')</script>";
+                echo "<script>alert('Wow! Appoinment request  successfully Send , Wait for Update.')</script>";
                 
             }else{
                 echo "<script>alert('Woops! Something Wrong Went.')</script>";

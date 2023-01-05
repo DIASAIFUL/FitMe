@@ -5,7 +5,7 @@
     <!--Main layout-->
     <main style="margin-top: 58px">
         <div class="container pt-4">
-         <h1>Welcome to dietitian Dashboard</h1> 
+         <h1>Welcome to Trainers Dashboard</h1> 
         </div>
     </main>
     <!--Main layout-->

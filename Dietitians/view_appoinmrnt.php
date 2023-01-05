@@ -1,6 +1,6 @@
 <?php  include 'config.php';
  session_start(); 
- error_reporting(0);
+ //error_reporting(0);
  ?>
 <?php include 'd_navber.php';
 if (isset($_GET['id']) && isset($_GET['status'])) {  

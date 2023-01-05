@@ -2,6 +2,7 @@
 
 include 'config.php';
 session_start();
+error_reporting(0);
 $user_id = $_SESSION['user_id'];
 
 if(!isset($user_id)){
@@ -34,7 +35,7 @@ if(isset($_GET['logout'])){
 
    <div class="profile">
       <?php
-         $select = mysqli_query($conn, "SELECT * FROM `admin_form` WHERE id = '$user_id'") or die('query failed');
+         $select = mysqli_query($conn, "SELECT * FROM `admin` WHERE id = '$user_id'") ;
          if(mysqli_num_rows($select) > 0){
             $fetch = mysqli_fetch_assoc($select);
          }
@@ -48,7 +49,7 @@ if(isset($_GET['logout'])){
       <a href="update_profile.php" class="btn">update profile</a>
       <a href="../admin/admin_dashboard.php" class="btn">G To Home</a>
       <a href="../index.php?logout=<?php echo $user_id; ?>" class="delete-btn">logout</a>
-      <p>new <a href="../index.php">login</a> or <a href="a_register.php">register</a></p>
+      <!-- <p>new <a href="../index.php">login</a> or <a href="a_register.php">register</a></p> -->
    </div>
 
 </div>

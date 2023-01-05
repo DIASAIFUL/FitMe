@@ -20,12 +20,12 @@
 
 
                if(isset($_GET['email'])){
-        $name=$_GET['name'];
-       
-        $email=$_GET['email'];
+                $name=$_GET['name'];
+              
+                $email=$_GET['email'];
 
-        $trainerId=$_GET['trainerId'];
-        
+                $trainerId=$_GET['trainerId'];
+                
 
 
             
@@ -82,9 +82,9 @@
 
 	<div class="row gy-3">
 	<?php
-					//include 'config.php';
+					// include 'config.php';
 
-					$sel= "SELECT * FROM `trainer` WHERE ";
+					$sel= "SELECT * FROM `trainer`";
 					$query=$conn-> query($sel);
 
 					while($row=$query->fetch_assoc()){
@@ -111,9 +111,10 @@
                           
                           
                           ?>
-                          <a class="<?php echo  $alradyemailtaken==1?"btnnone":""; ?>"  href="trainer.php?email=<?php echo  $_SESSION['email']; ?>&name=<?php echo  $_SESSION['username']; ?>&trainerId=<?php echo $row['id'] ?>"><?php echo  $alradyemailtaken==1?"Alrady Booked":"Appoinment"; ?></a>
-                          <?php
+                           <a class="<?php echo  $alradyemailtaken==1?"btnnone":""; ?>"  href="trainer.php?email=<?php echo  $_SESSION['email']; ?>&name=<?php echo 
+                            $_SESSION['username']; ?>&trainerId=<?php echo $row['id'] ?>"><?php echo  $alradyemailtaken==1?"Alrady Booked":"Appoinment"; ?></a>
                           
+                          <?php
                           }else{
                             
                             ?>

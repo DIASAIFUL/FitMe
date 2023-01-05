@@ -123,7 +123,7 @@ include 'config.php';
                         <th class="bg-light border-3">Blog Title</th>
                         <th class="bg-light border-3">Blog Content</th>
                         <th class="bg-light border-3">Blog Create Date</th>
-                        <th>Action</th>
+                       
                     </tr>
                 </thead>
 
@@ -143,17 +143,15 @@ include 'config.php';
 
                     <tr>
                         <td class="bg-light border-3"><?php echo $row['id']; ?></td>
-                        <td  class="bg-light border-3" style="height='20px'; weight='200px'"><img src="<?php echo $row['blog_image']; ?>"
-                                height='200px' ; weight='200px'></td>
+                        <td  class="bg-light border-3"><img src="<?php echo $row['blog_image']; ?>"
+                                height='100px' ; weight='100px'></td>
                         <td class="bg-light border-3"><?php echo $row['blog_title']; ?></td>
                         <td class="bg-light border-3"><?php echo $row['blog_content']; ?></td>
                         <td class="bg-light border-3"><?php echo $row['blog_create_date']; ?></td>
 
 
 
-                        <td>
-                            <a href="" class="btn btn-danger">Delete</a>
-                        </td>
+
                     </tr>
 
                     <?php

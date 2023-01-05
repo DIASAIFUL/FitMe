@@ -1,6 +1,6 @@
 <?php
 include('includes/dbconnection.php');
-// include 'config.php';
+ //include 'config.php';
 error_reporting(0);
 session_start();
 ?>
@@ -58,7 +58,7 @@ session_start();
                         <div class="col-lg-12 col-12 mx-auto">
                             <div class="booking-form">
                                 
-                                <h2 class="text-center mb-lg-3 mb-2">Search Appointment History by Name/Email</h2>
+                                <h2 class="text-center mb-lg-3 mb-2">Search Dietitian  Appointment History by Name/Email</h2>
                             
                                 <form role="form" method="post">
                                     <div class="row">
@@ -92,7 +92,7 @@ $Email=$_SESSION['email'];
                                         <th>Patient Name</th>
                                         <th>Mobile Number</th>
                                         <th>Email</th>
-                                    <th>Status</th>
+                                        <th>Status</th>
                                         <th>Remark</th>
                                         
                                     </tr>
@@ -153,6 +153,68 @@ $cnt=$cnt+1;
             </section>
              
         </main>
+
+        <div class="container">
+
+
+
+<!--Main layout-->
+<main style="margin-top: 58px">
+    <div class=" col-md-42 container pt-4">
+
+        <h1>Viwe traineer Appoinment</h1>
+
+        <table class="table align-middle mb-0 bg-white">
+
+            <thead class="bg-light border-3">
+                <tr  >
+                    <th class="bg-light border-3">SI No</th>
+                    <th class="bg-light border-3">Name</th>
+                    <th class="bg-light border-3">Email</th>
+                    <th class="bg-light border-3">number</th>
+                    <th class="bg-light border-3">W-Name</th>
+                    <th class="bg-light border-3">Message</th>
+                    <th class="bg-light border-3">create_time</th>
+                    
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <!---- connect with datadase------>
+
+                <?php
+        include 'config.php';
+        $email=$_GET['email'];
+        $sel= "SELECT * FROM `reg-workshop` ";
+        $query=$conn-> query($sel);
+
+        while($row=$query->fetch_assoc()){
+
+        ?>
+
+                <tr>
+                    <td class="bg-light border-3"><?php echo $row['id']; ?></td>
+                    <td class="bg-light border-3"><?php echo $row['name']; ?></td>
+                    <td class="bg-light border-3"><?php echo $row['email']; ?></td>
+                    <td class="bg-light border-3"><?php echo $row['number']; ?></td>
+                    <td class="bg-light border-3"><?php echo $row['w_name']; ?></td>
+                    <td class="bg-light border-3"><?php echo $row['message']; ?></td>
+                    <td class="bg-light border-3"><?php echo $row['create_time']; ?></td>
+                </tr>
+
+                <?php
+        }
+        ?>
+            </tbody>
+        </table>
+    </div>
+</main>
+<!--Main layout-->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>>
 
         <!-- JAVASCRIPT FILES -->
         <script src="js/jquery.min.js"></script>

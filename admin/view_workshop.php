@@ -24,7 +24,7 @@ include 'config.php';
         $imageextstored = array('png','jpg','jpeg',);
 
         if(in_array($imagecheak, $imageextstored)){
-            $uploaded_image = 'uploaded_img/'.$imagename;
+            $uploaded_image = '../uploaded_img/'.$imagename;
             move_uploaded_file($tmp_name,$uploaded_image);
 
             $insert ="INSERT INTO `workshop`(title,content,link,image) VALUES ('$title','$content', '$url','$uploaded_image')";
@@ -119,7 +119,7 @@ include 'config.php';
 <main style="margin-top: 58px">
     <div class=" col-md-42 container pt-4">
 
-        <h1>Blog Data</h1>
+        <h1>Workshop</h1>
 
         <div class="col-md-42 text-right">
             <button class="btn btn-success" data-toggle="modal" data-target="#myModal"> Add</button>
@@ -167,7 +167,7 @@ include 'config.php';
 
 
                     <td>
-                        <a href="" class="btn btn-danger">Delete</a>
+                    <a class="btn btn-danger" href="delete.php?id=<?php echo $row['id'];?>">DELETE</a>
                     </td>
                 </tr>
 

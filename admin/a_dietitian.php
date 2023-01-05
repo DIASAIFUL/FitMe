@@ -203,9 +203,7 @@ if(isset($_POST['submit'])){
 
 
                         <td>
-                            <a href="" class="btn btn-primary"> Edit  </a>
-                            <br><br>
-                            <a href="" class="btn btn-danger">Delete</a>
+                        <a class="btn btn-danger" href="delete.php?id=<?php echo $row['id'];?>">DELETE</a>
                         </td>
                     </tr>
 

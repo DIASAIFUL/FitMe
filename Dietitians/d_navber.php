@@ -1,3 +1,19 @@
+<?php
+session_start();
+error_reporting(0);
+include 'config.php';
+
+
+
+if (!isset($_SESSION['user_name'])) {
+    header("Location: a_login.php");
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +96,7 @@
                     <li class="nav-item dropdown">
 
                         <a href="d_profile.php" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
-                            <i class="fas fa-user"></i>
+                        <?php echo  $_SESSION['user_name']; ?><i class="fas fa-user"></i>
                         </a>
 
                     </li>

@@ -92,10 +92,10 @@ if ($result->num_rows > 0) {
                             </div>
 
                             <div class="mb-3">
-                                <a href="signin.php">Create New Account</a><br>
-
-                                <a href="Dietitians/d_login.php">Dietitians Account</a><br>
-                                <a href="admin/a_login.php">admin Account</a>
+                                <a href="signin.php"><h5>Create New Account</h5></a><br><br>
+                                <a href="trainers/d_login.php"><h5>Trainers Account</h5></a><br>
+                                <a href="Dietitians/d_login.php"><h5>Dietitians Account</h5></a><br>
+                                <a href="admin/a_login.php"><h5>Admin Account</h5></a>
 
                             </div>
 

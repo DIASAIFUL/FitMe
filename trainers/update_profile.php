@@ -2,7 +2,7 @@
 
 include 'config.php';
 session_start();
-
+error_reporting(0);
 $user_id = $_SESSION['user_id'];
 
 if(isset($_POST['update_profile'])){
@@ -10,7 +10,7 @@ if(isset($_POST['update_profile'])){
    $update_name = mysqli_real_escape_string($conn, $_POST['update_name']);
    $update_email = mysqli_real_escape_string($conn, $_POST['update_email']);
 
-   mysqli_query($conn, "UPDATE `dietitian` SET name = '$update_name', email = '$update_email' WHERE id = '$user_id'") or die('query failed');
+   mysqli_query($conn, "UPDATE `trainer` SET title = '$update_name', email = '$update_email' WHERE id = '$user_id'") or die('query failed');
 
    $old_pass = $_POST['old_pass'];
    $update_pass = mysqli_real_escape_string($conn, md5($_POST['update_pass']));
@@ -23,7 +23,7 @@ if(isset($_POST['update_profile'])){
       }elseif($new_pass != $confirm_pass){
          $message[] = 'confirm password not matched!';
       }else{
-         mysqli_query($conn, "UPDATE `dietitian` SET password = '$confirm_pass' WHERE id = '$user_id'") or die('query failed');
+         mysqli_query($conn, "UPDATE `trainer` SET password = '$confirm_pass' WHERE id = '$user_id'") or die('query failed');
          $message[] = 'password updated successfully!';
       }
    }
@@ -37,7 +37,7 @@ if(isset($_POST['update_profile'])){
       if($update_image_size > 2000000){
          $message[] = 'image is too large';
       }else{
-         $image_update_query = mysqli_query($conn, "UPDATE `dietitian` SET image = '$update_image' WHERE id = '$user_id'") or die('query failed');
+         $image_update_query = mysqli_query($conn, "UPDATE `trainer` SET image = '$update_image' WHERE id = '$user_id'") or die('query failed');
          if($image_update_query){
             move_uploaded_file($update_image_tmp_name, $update_image_folder);
          }
@@ -66,7 +66,7 @@ if(isset($_POST['update_profile'])){
 <div class="update-profile">
 
    <?php
-      $select = mysqli_query($conn, "SELECT * FROM `dietitian` WHERE id = '$user_id'") or die('query failed');
+      $select = mysqli_query($conn, "SELECT * FROM `trainer` WHERE id = '$user_id'") or die('query failed');
       if(mysqli_num_rows($select) > 0){
          $fetch = mysqli_fetch_assoc($select);
       }
@@ -88,7 +88,7 @@ if(isset($_POST['update_profile'])){
       <div class="flex">
          <div class="inputBox">
             <span>username :</span>
-            <input type="text" name="update_name" value="<?php echo $fetch['name']; ?>" class="box">
+            <input type="text" name="update_name" value="<?php echo $fetch['title']; ?>" class="box">
             <span>your email :</span>
             <input type="email" name="update_email" value="<?php echo $fetch['email']; ?>" class="box">
             <span>update your pic :</span>

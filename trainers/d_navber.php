@@ -34,6 +34,10 @@
 
                     <a href="view_workshop.php" class="list-group-item list-group-item-action py-2 ripple"><i
                             class="fas fa-calendar fa-fw me-3"></i><span>Workshop</span></a>
+                    <a href="view_workshop-reg.php" class="list-group-item list-group-item-action py-2 ripple"><i
+                            class="fas fa-calendar fa-fw me-3"></i><span>Workshop-Reg</span></a>
+                    <a href="view-booking.php" class="list-group-item list-group-item-action py-2 ripple"><i
+                            class="fas fa-calendar fa-fw me-3"></i><span>booking</span></a>
 
                     <a href="admin_blog.php" class="list-group-item list-group-item-action py-2 ripple"><i
                             class="fas fa-blog fa-fw me-3"></i><span>Add Blog</span></a>
